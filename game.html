@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Capture the Food</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+        <script src="script.js"></script>
+        <link rel="shortcut icon" type="image/png" href="catcat.png" />
+    </head>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-60765860-1', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+    <body class="main">
+        <div class="loader"></div>
+        
+        <div id="content-wrap">
+        
+        <div class="title-wrap">
+             <h1 class = "inrow">CAPTURE THE FOOD</h1>
+             <h3 class="inrow">(beta)</h3>
+             <h2 id="level" class = "inrow"></h2>
+        </div>
+        
+        <div class="end">
+            <p>Finished the game?</p>
+            <p>More to come!</p>
+            <iframe src="https://docs.google.com/forms/d/12m3JuOYxp5TlXuteW4d1aSWJ8HnDZFzpDvyJXvAjW5Y/viewform?embedded=true" width="710" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+        </div>
+        
+        <div class="game">
+            <table id="gametable"></table>
+            
+            <div class="controls">
+                <div class="gcb">
+                <button type="button" class="btn btn-primary" name="restart" value="restart" class="button">restart</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="tutorial.html" target="_blank"><button type="button" class="btn btn-primary" id="tut" class="button">how to play</button></a>
+                </div>
+                <div id="audiobox" class="button">
+                    <a class="playback" href="javascript:void(0)">
+                    <i class="fa fa-volume-up fa-lg" id = "mute"></i>
+                    </a>
+                    <audio loop autoplay>
+                        <source src="wolfram2.wav" type="audio/mpeg">
+                        Your browser does not support HTML5 audio.
+                    </audio>
+                </div>
+            </div>
+            
+        </div>
+        
+        </div>
+        
+    </body>
+
+</html>

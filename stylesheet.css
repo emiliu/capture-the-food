@@ -1,0 +1,170 @@
+body {
+    font-family: 'Quicksand', 'sans-serif';
+}
+
+.main {
+    background-color: #E1E6F0;
+}
+
+.tutorial {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+table, td {
+    border-collapse: collapse;
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+#audiobox, #tut, #restart {
+    display: inline;
+}
+
+#content-wrap {
+    display: none;
+    width: 710px;
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+.cat {
+    background-image: url("catuse.png");
+    background-size: cover
+ }
+
+.usable {
+    background-image: url("usable.png");
+    background-size: cover;
+}
+
+.used {
+    background-image: url("used.png");
+    background-size: cover;
+}
+
+.wall {
+    background-image: url("wall.png");
+    background-size: cover;
+}
+
+.flag {
+    background-image: url("flagsq.png");
+    background-size: cover;
+}
+
+.catmat {
+    background-image: url("catmat.png");
+    background-size: cover;
+}
+
+.start {
+    background-image: url("start.png");
+    background-size: cover;
+}
+
+.finish {
+    background-image: url("finish.png");
+    background-size: cover;
+}
+
+.key {
+    background-image: url("keysq.png");
+    background-size: cover;
+}
+
+.lock {
+    background-image: url("locksq.png");
+    background-size: cover;
+}
+
+.mat {
+    background-image: url("mat.png");
+    background-size: cover;
+}
+
+a, i {
+    color: #337AB7;
+    text-decoration: none;
+    padding: 20px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 45px;
+    text-align: left;
+    font-weight: bolder;
+    color:#002E5C;
+}
+
+h2, h3 {
+    color: #335C85;
+}
+
+.inrow, .gcb {
+    display: inline;    
+}
+
+.end {
+    margin-top: 100px;
+    display: none;
+}
+
+.end p {
+    font-size: 50px;
+    font-weight: bolder;
+    color: #002E5C;
+    text-align: center;
+}
+
+#level {
+    margin-left: 45px;
+}
+
+#audiobox {
+    float:right;
+}
+
+.game {
+   margin-top: 40px;
+}
+
+.btn {
+    font-family: 'Quicksand';
+    display: inline;
+}
+
+.loader {
+    position: fixed;
+	width: 100%;
+	height: 100%;
+	background: url('catcatloader.png') no-repeat fixed center;
+    -webkit-animation: spin 2s linear infinite;
+    -moz-animation: spin 2s linear infinite;
+    -o-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
