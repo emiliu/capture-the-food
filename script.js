@@ -223,7 +223,10 @@ $(window).load(function() {
     });
 
     if (window.innerWidth < window.innerHeight) {
-        $("#content-wrap").css("width", (window.innerWidth * 0.9).toString() + "px");
+        $("#content-wrap").css({
+            "width" : (window.innerWidth * 0.9).toString() + "px",
+            "height" : window.innerWidth.toString() + "px"
+        });
     } else {
         $("#content-wrap").css("width", window.innerHeight.toString() + "px");
     }

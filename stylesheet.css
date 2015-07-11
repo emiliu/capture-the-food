@@ -16,6 +16,7 @@ body {
 
 #content-wrap {
     height: 90%;
+    max-height: 90%;
     visibility: hidden;
     position: relative;
     top: 50%;
