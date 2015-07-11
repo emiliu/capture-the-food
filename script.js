@@ -196,7 +196,7 @@ $(window).load(function() {
             case 82:
                 nextLevel(0);
                 break;
-              default:
+            default:
                 console.log("not a valid key");
             
         }
@@ -232,6 +232,60 @@ $(window).load(function() {
     $("#content-wrap").css("visibility", "visible");
     $(".loader").fadeOut("slow");
     $(".loader").css("display", "none");
+
+    // for touchscreens
+    var xi, yi;
+    var threshold = 60;
+    $(".everything").on("touchstart", function(ev) {
+        var e = ev.originalEvent;
+        var touchobject = e.changedTouches[0];
+        xi = touchobject.pageX;
+        yi = touchobject.pageY;
+    });
+    $(".everything").on("touchmove", function(ev) {
+        ev.preventDefault();
+        ev.originalEvent.preventDefault();
+    });
+    $(".everything").on("touchend", function(ev) {
+        var e = ev.originalEvent;
+        var touchobject = e.changedTouches[0];
+        var dx = touchobject.pageX - xi;
+        var dy = touchobject.pageY - yi;
+        var d;
+        if ((Math.abs(dy) > Math.abs(dx)) && (Math.abs(dy) >= threshold)) {
+            if (dy > 0) {
+                d = DOWN;
+            } else {
+                d = UP;
+            }
+        } else if (Math.abs(dx) >= threshold) {
+            if (dx > 0) {
+                d = RIGHT;
+            } else {
+                d = LEFT;
+            }
+        }
+        switch(d) {
+            case UP:
+                update(0, -1);
+                break;
+            case DOWN:
+                update(0, 1);
+                break;
+            case LEFT:
+                update(1, -1);
+                break;
+            case RIGHT:
+                update(1, 1);
+                break;
+            default:
+                console.log("not a valid swipe");
+        }
+        // advance a level
+        if (checkWin(myBoard)) {
+            nextLevel(1);
+        }
+    });
     
 });
 
