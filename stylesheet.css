@@ -37,57 +37,57 @@ a {
 }
 
 .cat {
-    background-image: url("catuse.png");
+    background-image: url("img/catuse.png");
     background-size: cover
  }
 
 .usable {
-    background-image: url("usable.png");
+    background-image: url("img/usable.png");
     background-size: cover;
 }
 
 .used {
-    background-image: url("used.png");
+    background-image: url("img/used.png");
     background-size: cover;
 }
 
 .wall {
-    background-image: url("wall.png");
+    background-image: url("img/wall.png");
     background-size: cover;
 }
 
 .flag {
-    background-image: url("flagsq.png");
+    background-image: url("img/flagsq.png");
     background-size: cover;
 }
 
 .catmat {
-    background-image: url("catmat.png");
+    background-image: url("img/catmat.png");
     background-size: cover;
 }
 
 .start {
-    background-image: url("start.png");
+    background-image: url("img/start.png");
     background-size: cover;
 }
 
 .finish {
-    background-image: url("finish.png");
+    background-image: url("img/finish.png");
     background-size: cover;
 }
 
 .key {
-    background-image: url("keysq.png");
+    background-image: url("img/keysq.png");
     background-size: cover;
 }
 
 .lock {
-    background-image: url("locksq.png");
+    background-image: url("img/locksq.png");
     background-size: cover;
 }
 
 .mat {
-    background-image: url("mat.png");
+    background-image: url("img/mat.png");
     background-size: cover;
 }
 
@@ -149,7 +149,7 @@ h2, h3 {
     position: fixed;
 	width: 100%;
 	height: 100%;
-	background: url('catcatloader.png') no-repeat fixed center;
+	background: url('img/catcatloader.png') no-repeat fixed center;
     -webkit-animation: spin 2s linear infinite;
     -moz-animation: spin 2s linear infinite;
     -o-animation: spin 2s linear infinite;
