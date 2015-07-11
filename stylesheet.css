@@ -28,8 +28,6 @@ a {
     height: 90%;
     visibility: hidden;
     position: relative;
-    width: 60%;
-    max-width: 750px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* add prefixes */
@@ -43,7 +41,9 @@ a {
 
 .controls {
     position: absolute;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
     bottom: 0;
 }
 
@@ -102,10 +102,13 @@ a {
     background-size: cover;
 }
 
-a, i {
+i {
     color: #337AB7;
+    margin: 20px 0;
+}
+
+a {
     text-decoration: none;
-    padding: 20px;
 }
 
 a:hover {
@@ -130,8 +133,9 @@ h2, h3 {
 .end {
     display: none;
     width: 710px;
-    margin: 0 auto;
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 60px;
 }
 
@@ -166,6 +170,7 @@ h2, h3 {
 
 #audiobox {
     float: right;
+    margin-right: -20px;
 }
 /*
 .game {

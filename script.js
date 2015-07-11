@@ -221,7 +221,13 @@ $(window).load(function() {
             }
         });
     });
-    
+
+    if (window.innerWidth < window.innerHeight) {
+        $("#content-wrap").css("width", (window.innerWidth * 0.9).toString() + "px");
+    } else {
+        $("#content-wrap").css("width", window.innerHeight.toString() + "px");
+    }
+
     // loading screen
     $("#content-wrap").css("visibility", "visible");
     $(".loader").fadeOut("slow");
