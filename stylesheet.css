@@ -25,11 +25,11 @@ a {
 }
 
 #content-wrap {
-    display: inline-block;
     height: 90%;
     visibility: hidden;
     position: relative;
-    width: auto;
+    width: 60%;
+    max-width: 750px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* add prefixes */
@@ -147,8 +147,21 @@ h2, h3 {
 }
 
 #level {
-    margin-left: 45px;
-    /* display: block; float: right; */
+    /*text-align: right;
+    position: absolute;
+    bottom: 0;
+    /*margin-left: 45px;*/
+    display: block; float: right;
+}
+
+.left {
+    display: block;
+    float: left;
+}
+
+.right {
+    display: block;
+    float: right;
 }
 
 #audiobox {
@@ -170,6 +183,7 @@ h2, h3 {
 #title-wrap {
     position: absolute;
     top: 0;
+    width: 100%;
 }
 
 .btn {
