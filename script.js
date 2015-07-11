@@ -1,5 +1,3 @@
-var WIDTH = 700.0;
-
 // global constants
 
 // block constants
@@ -225,7 +223,7 @@ $(window).load(function() {
     });
     
     // loading screen
-    $("#content-wrap").show();
+    $("#content-wrap").css("visibility", "visible");
     $(".loader").fadeOut("slow");
     $(".loader").css("display", "none");
     
@@ -251,6 +249,7 @@ function nextLevel(step) {
     } else {
         // sorry, there's no more! (for now)
         $(".end").show();
+        $("iframe").css("height", (window.innerHeight * 0.6).toString()+"px");
         $(".gcb").hide();
         // gcb game control buttons
     }
@@ -448,16 +447,24 @@ function clearTable() {
 }
 
 function generateTable(board) {
+
+    var cellsize;
+
+    if ((window.innerHeight - 30) / board.length < window.innerWidth / board[0].length) {
+        cellsize = 0.7 * (window.innerHeight - 30) / board.length;
+    } else {
+        cellsize = 0.8 * window.innerWidth / board[0].length;
+    }
     
-    // fixed width, variable height, square cells
+    // square cells
     
     for(var games = 0; games < board.length; games++){
         var row = document.createElement("tr");
         for(var j = 0; j < board[0].length; j++){
             var cell=document.createElement("td");
             cell.id="row"+games+"col"+j;
-            cell.width=(WIDTH/board[0].length).toString();
-            cell.height=(WIDTH/board[0].length).toString();
+            cell.width=cellsize.toString();
+            cell.height=cellsize.toString();
             row.appendChild(cell);
         }
     document.getElementById("gametable").appendChild(row);
