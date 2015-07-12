@@ -10,6 +10,8 @@ How to Play
 
 Use the arrow keys or (on touchscreens) swipe in the appropriate direction to make the cat visit each block once, ending with the finish mat. Mats, such as the start and finish mats, can be visited more than once, and keys must be obtained before locks can be passed.
 
+To restart a level, click the restart button in the bottom left or press `r`.
+
 Creators
 --------
 - Zak Dasaro
