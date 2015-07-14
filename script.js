@@ -518,6 +518,8 @@ function generateTable(board) {
     } else {
         cellsize = 0.8 * window.innerWidth / board[0].length;
     }
+
+    $(".controls").css("width", (cellsize*board[0].length).toString()+"px");
     
     // square cells
     
