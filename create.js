@@ -1,3 +1,8 @@
+$(window).load( function() {
+    $("#content-wrap").css("visibility", "visible");
+    $(".controls").css("display", "none");
+});
+
 var WIDTH = 700.0;
 var widthHeight;
 var chosenTile="start"
@@ -19,7 +24,8 @@ function testSize(){
         widthHeight=generateTable(rowIn,colIn);
         displayToolbar();
         document.getElementsByTagName("form")[0].style.display="none";
-        document.getElementById("controlBox").style.display="block";
+        $(".toolbar").show();
+        $(".controls").show();
     }
 }
 function generateTable(rowIn,colIn) {
@@ -42,7 +48,7 @@ function generateTable(rowIn,colIn) {
     return cell.width;
 }
 function displayToolbar(){//generates the toolbar for selecting different tile types. var cell has no real meaning because it keeps changing
-    var table=document.getElementById("toolbar");
+    var table=document.getElementById("options");
     var row=document.createElement("tr");
     
     function makeSelector(kind){
@@ -146,15 +152,15 @@ function grabLvl(){
     console.log(query);
     query=btoa(query);
     console.log(query);
-    document.getElementById("testdrivebtn").style.display="block";
-    document.getElementById("testdrivebtn").setAttribute("href","test_drive.html?"+query);
+    document.getElementById("testdrivebtn").setAttribute("href","test.html?"+query);
     document.getElementById("testdrivebtn").target="_blank";
+    $("#testdrivebtn").show();
 }
 
 //$( "button[name='restart']" ).click(function(){
-function clearlevel(){//I'm sorry but I just can't use JQuery sometimes
+function clearlevel(){
     var table=document.getElementById("gametable");
-    for (var i = 0, row; row = table.rows[i]; i++) {//third time I'm using this piece of code
+    for (var i = 0, row; row = table.rows[i]; i++) {
         for (var j = 0, col; col = row.cells[j]; j++) {
             col.className="usable";
         }
