@@ -1,5 +1,3 @@
-var WIDTH = 700.0;
-
 // global constants
 
 // block constants
@@ -32,7 +30,7 @@ var LEVELSTARTS;
 // global variables
 var level = 0;
 var myBoard, currentPos;
-function fixFormat(lvl){ //it just needs to replace start with catstart and locate the levelstart
+function fixFormat(lvl){ // replace start with catstart and locate the levelstart
     for (i=0; i<lvl.length; i++){
         for (j=0; j<lvl[i].length;j++){
             if(lvl[i][j]==="start"){
@@ -88,7 +86,7 @@ $(window).load(function() {
             case 82:
                 nextLevel(0);
                 break;
-              default:
+            default:
                 console.log("not a valid key");
             
         }
@@ -113,11 +111,75 @@ $(window).load(function() {
             }
         });
     });
-    
+
+    if (window.innerWidth < window.innerHeight) {
+        $("#content-wrap").css({
+            "width" : (window.innerWidth * 0.9).toString() + "px",
+            "height" : window.innerWidth.toString() + "px"
+        });
+    } else {
+        $("#content-wrap").css("width", window.innerHeight.toString() + "px");
+    }
+
     // loading screen
     $("#content-wrap").css("visibility", "visible");
     $(".loader").fadeOut("slow");
     $(".loader").css("display", "none");
+
+    // for touchscreens
+    var xi, yi;
+    var threshold = 60;
+    $(".everything").on("touchstart", function(ev) {
+        var e = ev.originalEvent;
+        var touchobject = e.changedTouches[0];
+        xi = touchobject.pageX;
+        yi = touchobject.pageY;
+    });
+    $(".everything").on("touchmove", function(ev) {
+        ev.preventDefault();
+        ev.originalEvent.preventDefault();
+    });
+    $(".everything").on("touchend", function(ev) {
+        var e = ev.originalEvent;
+        var touchobject = e.changedTouches[0];
+        var dx = touchobject.pageX - xi;
+        var dy = touchobject.pageY - yi;
+        var d;
+        if ((Math.abs(dy) > Math.abs(dx)) && (Math.abs(dy) >= threshold)) {
+            if (dy > 0) {
+                d = DOWN;
+            } else {
+                d = UP;
+            }
+        } else if (Math.abs(dx) >= threshold) {
+            if (dx > 0) {
+                d = RIGHT;
+            } else {
+                d = LEFT;
+            }
+        }
+        switch(d) {
+            case UP:
+                update(0, -1);
+                break;
+            case DOWN:
+                update(0, 1);
+                break;
+            case LEFT:
+                update(1, -1);
+                break;
+            case RIGHT:
+                update(1, 1);
+                break;
+            default:
+                console.log("not a valid swipe");
+        }
+        // advance a level
+        if (checkWin(myBoard)) {
+            nextLevel(1);
+        }
+    });
+    
 });
 
 function nextLevel(step) {
@@ -336,16 +398,24 @@ function clearTable() {
 }
 
 function generateTable(board) {
+
+    var cellsize;
+
+    if ((window.innerHeight - 30) / board.length < window.innerWidth / board[0].length) {
+        cellsize = 0.7 * (window.innerHeight - 30) / board.length;
+    } else {
+        cellsize = 0.8 * window.innerWidth / board[0].length;
+    }
     
-    // fixed width, variable height, square cells
+    // square cells
     
     for(var games = 0; games < board.length; games++){
         var row = document.createElement("tr");
         for(var j = 0; j < board[0].length; j++){
             var cell=document.createElement("td");
             cell.id="row"+games+"col"+j;
-            cell.width=(WIDTH/board[0].length).toString();
-            cell.height=(WIDTH/board[0].length).toString();
+            cell.width=cellsize.toString();
+            cell.height=cellsize.toString();
             row.appendChild(cell);
         }
     document.getElementById("gametable").appendChild(row);
