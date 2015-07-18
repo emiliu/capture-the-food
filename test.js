@@ -177,10 +177,10 @@ function fixFormat(lvl){ //it just needs to replace start with catstart and loca
     return lvl;
 }
 var lvlTest;
+var queryb = window.location.search.substring(1);
 $(window).load(function() {
     var qsParm = new Array();
-    var query = window.location.search.substring(1);
-    query=atob(query);
+    query=atob(queryb);
     var parms = query.split('&');
     for (var i=0; i<parms.length; i++) {
         parms[i]=parms[i].split(",");
@@ -250,7 +250,6 @@ $(window).load(function() {
     $("#content-wrap").show();
     $(".loader").fadeOut("slow");
     $(".loader").css("display", "none");
-    
 });
 
 function nextLevel(step) {
@@ -259,19 +258,20 @@ function nextLevel(step) {
     // advance a level: step = 1
     
     console.log(level);
-    
-    level+=step;
+    if (step===0) {
+    //level+=step;
     clearTable();
     myBoard = [];
     myBoard = $.extend(true, [], lvlTest);
     currentPos = LEVELSTARTS[level].slice(0);
     updateTable(generateTable(myBoard));
-
-    if (step>0){
+    }
+    if (step){
     // you beat the test level
-    $(".end").show();
+    $(".end").append('<iframe src="testdriveframe.html?'+queryb+'" width="200" height="400"></iframe>').show();
     $(".gcb").hide();
     // gcb game control buttons
+    clearTable();
     }
 
     
