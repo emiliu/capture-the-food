@@ -2,7 +2,7 @@ Capture the Food
 ================
 A small HTML/CSS/JavaScript game, originally created at [games++](http://gamesplusplus.org), an event hosted by the Stevens Institute of Technology.
 
-The game can currently be played [here](https://goo.gl/GKwtFd).
+The latest working version of the game is [hosted by GitHub](http://emiliu.github.io/capture-the-food/).
 
 How to Play
 -----------
