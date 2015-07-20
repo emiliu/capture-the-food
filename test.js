@@ -196,8 +196,9 @@ function nextLevel(step) {
     currentPos = LEVELSTARTS[level].slice(0);
     updateTable(generateTable(myBoard));
     }
-    if (step){
+    if (step && level<1){
     // you beat the test level
+    level++;
     $(".end").append('<iframe src="testdriveframe.html?'+queryb+'" width="200" height="400"></iframe>').show();
     $(".gcb").hide();
     // gcb game control buttons
