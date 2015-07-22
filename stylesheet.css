@@ -261,12 +261,11 @@ a, a:hover {
 /* == tutorial == */
 
 .tutorial {
-    width: 75%;
     font-size: 16px;
-    position: relative;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+}
+
+.tutorial p {
+    margin: 20px;
 }
 
 .center {
