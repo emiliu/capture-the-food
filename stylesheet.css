@@ -284,3 +284,22 @@ a, a:hover {
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+
+/* == iframe == */
+
+iframe {
+    border: none;
+    width: 200px;
+    height: 400px;
+}
+
+input[type=submit] {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}

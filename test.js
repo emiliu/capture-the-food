@@ -199,7 +199,7 @@ function nextLevel(step) {
     if (step && level<1){
     // you beat the test level
     level++;
-    $(".end").append('<iframe src="testdriveframe.html?'+queryb+'" width="200" height="400"></iframe>').show();
+    $(".end").append('<iframe src="testdriveframe.html?'+queryb+'"></iframe>').show();
     $(".gcb").hide();
     // gcb game control buttons
     clearTable();
