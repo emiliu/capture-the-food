@@ -218,13 +218,6 @@ a, a:hover {
     bottom: 60px;
 }
 
-.end p {
-    font-size: 30px;
-    font-weight: bolder;
-    color: #002E5C;
-    text-align: center;
-}
-
 .end iframe {
     width: 710px;
 }
@@ -294,12 +287,25 @@ iframe {
     height: 400px;
 }
 
+.ss-form {
+    width: 710px;
+    text-align: center;
+    margin: 0 auto;
+}
+
 input[type=submit] {
     position: absolute;
+    margin-top: 10px;
     left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.ss-form h1 {
+    font-size: 30px;
+    font-weight: bolder;
+    color: #002E5C;
+    text-align: center;
 }
