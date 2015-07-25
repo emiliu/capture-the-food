@@ -284,6 +284,15 @@ input[type=submit] {
 }
 
 
+/* == index == */
+
+#main-menu {
+    position: absolute;
+    width: 80%;
+    top: 40%;
+}
+
+
 /* == position center == */
 
 .center-x {
