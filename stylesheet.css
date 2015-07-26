@@ -198,7 +198,6 @@ a, a:hover {
     display: none;
     width: 710px;
     position: absolute;
-    bottom: 60px;
 }
 
 .end iframe {
@@ -262,7 +261,7 @@ a, a:hover {
 iframe {
     border: none;
     width: 200px;
-    height: 400px;
+    height: 260px;
 }
 
 .ss-form {
