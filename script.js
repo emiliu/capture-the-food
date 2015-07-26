@@ -1,5 +1,3 @@
-// global constants
-
 // block constants
 var USABLE = "usable";
 var USED = "used";
@@ -156,6 +154,9 @@ function setup() {
     });
     
 }
+
+
+/* == game functions == */
 
 function update(dir, step) {
     
@@ -382,5 +383,30 @@ function printBoard(board) {
     console.log("board:");
     for (var i = 0; i < board.length; i++) {
         console.log(board[i]);
+    }
+}
+
+
+/* == custom level creation == */
+
+function decodeBoard(encoded) {
+    // turn base64 encoded string into 2d array
+    var board = atob(encoded).split('&');
+    for (var i = 0; i < board.length; i++) {
+        board[i] = board[i].split(",");
+    }
+    return fixFormat(board);
+}
+
+function fixFormat(board){
+    // replace start with catstart and locate the levelstart
+    for (i = 0; i < board.length; i++){
+        for (j = 0; j < board[i].length; j++){
+            if (board[i][j] === "start") {
+                board[i][j] = "catstart";
+                levelStart = [i, j, false];
+                return board;
+            }
+        }
     }
 }
