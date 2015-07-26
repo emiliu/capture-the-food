@@ -1,58 +1,53 @@
-// levels!
-var testStart;
-var LEVELSTARTS;
-
-var lvlTest;
-var queryb = window.location.search.substring(1);
+var testLevelStart;
+var testLevel;
+var query = window.location.search.substring(1);
 
 $(window).load(function() {
-    var qsParm = new Array();
-    query=atob(queryb);
-    var parms = query.split('&');
-    for (var i=0; i<parms.length; i++) {
-        parms[i]=parms[i].split(",");
-    }
-    console.log(parms); // I have no idea why this says catstart instead of start before the fixFormat function is called.
-    lvlTest=fixFormat(parms);
-    console.log(lvlTest);
-    
+    testLevel = decodeBoard(query);
     setup();
 });
 
-function fixFormat(lvl){ // replace start with catstart and locate the levelstart
-    for (i=0; i<lvl.length; i++){
-        for (j=0; j<lvl[i].length;j++){
-            if(lvl[i][j]==="start"){
-            lvl[i][j]="catstart";
-            testStart=[i,j,false];
-            LEVELSTARTS=[testStart];
+function decodeBoard(encoded) {
+    // turn base64 encoded string into 2d array
+    var board = atob(encoded).split('&');
+    for (var i = 0; i < board.length; i++) {
+        board[i] = board[i].split(",");
+    }
+    return fixFormat(board);
+}
+
+function fixFormat(board){
+    // replace start with catstart and locate the levelstart
+    for (i = 0; i < board.length; i++){
+        for (j = 0; j < board[i].length; j++){
+            if (board[i][j] === "start") {
+                board[i][j] = "catstart";
+                testLevelStart = [i, j, false];
+                return board;
             }
         }
     }
-    return lvl;
 }
 
 function nextLevel(step) {
-    
-    // restart or just start: step = 0
-    // advance a level: step = 1
-    
+
     console.log(level);
+
     if (step===0) {
-    //level+=step;
-    clearTable();
-    myBoard = [];
-    myBoard = $.extend(true, [], lvlTest);
-    currentPos = LEVELSTARTS[level].slice(0);
-    updateTable(generateTable(myBoard));
+        clearTable();
+        myBoard = [];
+        myBoard = $.extend(true, [], testLevel);
+        currentPos = testLevelStart.slice(0);
+        updateTable(generateTable(myBoard));
     }
-    if (step && level<1){
-    // you beat the test level
-    level++;
-    $(".end").append('<iframe src="testdriveframe.html?'+queryb+'"></iframe>').show();
-    $(".gcb").hide();
-    // gcb game control buttons
-    clearTable();
+
+    if (step && level < 1){
+        // beat the test level
+        level++;
+        $(".end").append('<iframe src="testdriveframe.html?'+
+            query+'"></iframe>').show();
+        $(".gcb").hide();
+        clearTable();
     }
     
 }
