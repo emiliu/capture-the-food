@@ -24,18 +24,18 @@
                         <h1 class="inrow">Capture the Food: Stage Builder</h1>
                     </div>
                     <br><br><br>
-                    <form>
-                        Rows: (5 min, 12 max) <input type="text" id="rowIn"><br>
-                        Columns: (5 min, 32 max) <input type="text" id="colIn"><br>
-                        <input type="button" class="btn btn-primary" value="Generate Table!" onclick="testSize()">
+                    <form id="tablesize">
+                        Rows: <input type="text" id="rows">&nbsp;&nbsp;
+                        Columns: <input type="text" id="cols">&nbsp;&nbsp;
+                        <input type="button" id="gentable" class="btn btn-primary" value="Generate Table!">
                     </form>
                 </div>
 
                 <table id="gametable"></table>
                 
                 <div class="controls">
-                    <button class="btn btn-primary" onclick="verify()">verify the stage</button>
-                    <a id="testdrivebtn" style="display:none"><button class="btn btn-primary">test drive</button></a>
+                    <button id="verify" class="btn btn-primary">verify the stage</button>
+                    <a id="test"><button class="btn btn-primary">test drive</button></a>
                     <div class="toolbar">
                         <h4>Click on a tile type to select it. Then, click on tiles above to place that type of tile</h4>
                         <table id="options">

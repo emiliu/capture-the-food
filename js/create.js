@@ -1,77 +1,4 @@
-$(window).load( function() {
-    $("#content-wrap").css("visibility", "visible");
-    $(".controls").css("display", "none");
-});
-
-var WIDTH = 700.0;
-var widthHeight;
 var chosenTile="start"
-function testSize(){
-    var rowIn = document.getElementById("rowIn").value;
-    var colIn=document.getElementById("colIn").value;
-    parseInt(rowIn); parseInt(colIn);
-    console.log(rowIn); console.log(colIn);
-    if(rowIn>12 || rowIn<5 || isNaN(rowIn)){
-        if(colIn>32 || colIn<5 || isNaN(colIn)){
-            alert("Invalid numbers of rows and columns. Make sure you enter numbers that meet the specified range.");
-        }
-        else{alert("Invalid number of rows. Make sure you enter numbers that meet the specified range.");}
-    }
-    else if(colIn>32 || colIn<5 || isNaN(colIn)){
-        alert("Invalid number of columns. Make sure you enter numbers that meet the specified range.");
-    }
-    else{
-        widthHeight=generateTable(rowIn,colIn);
-        displayToolbar();
-        document.getElementsByTagName("form")[0].style.display="none";
-        $(".toolbar").show();
-        $(".controls").show();
-    }
-}
-function generateTable(rowIn,colIn) {
-    
-    // fixed width, variable height, square cells
-    
-    for(var games = 0; games < rowIn; games++){
-        var row = document.createElement("tr");
-        for(var j = 0; j < colIn; j++){
-            var cell=document.createElement("td");
-            cell.id="row"+games+"col"+j;
-            cell.width=(WIDTH/colIn).toString();
-            cell.height=cell.width;//(WIDTH/rowIn).toString();
-            cell.className="usable";
-            cell.setAttribute("onclick","paint(this)");
-            row.appendChild(cell);
-        }
-    document.getElementById("gametable").appendChild(row);
-    }
-    return cell.width;
-}
-function displayToolbar(){//generates the toolbar for selecting different tile types. var cell has no real meaning because it keeps changing
-    var table=document.getElementById("options");
-    var row=document.createElement("tr");
-    
-    function makeSelector(kind){
-        var cell=document.createElement("td");
-        cell.setAttribute("onclick","paintbrush("+kind+")");
-        if(kind==="flag"){cell.title="food";} else{cell.title=kind;}
-        cell.width=125;
-        cell.height=125;
-        cell.className=kind;
-        row.appendChild(cell);
-    }
-    makeSelector("start");
-    makeSelector("usable");
-    makeSelector("wall");
-    makeSelector("key");
-    table.appendChild(row);
-    var row=document.createElement("tr");
-    makeSelector("lock");
-    makeSelector("flag");
-    makeSelector("finish");
-    makeSelector("mat");
-    table.appendChild(row);
-}
 var usable="usable";
 var start="start";
 var lock="lock";
@@ -81,29 +8,119 @@ var flag="flag";
 var finish="finish";
 var mat="mat";
 
+$(window).load( function() {
+    $("#content-wrap").css("visibility", "visible");
+    $(".controls").css("display", "none");
 
-function paintbrush(kind){
-    document.getElementById("selector").className=kind;
-    if(kind==="flag"){document.getElementById("selector").title="food";} else{document.getElementById("selector").title=kind;}
-    chosenTile=kind;
+    $("#gentable").click( function() {
+        testSize();
+    })
+
+    $("#verify").click( function() {
+        verify();
+    });
+});
+
+function testSize() {
+    var rows = parseInt($("#rows").val());
+    var cols = parseInt($("#cols").val());
+    console.log(rows);
+    console.log(cols);
+    if (isNaN(rows) || isNaN(cols) || rows <= 0 || cols <= 0) {
+        alert("invalid number of rows or columns");
+    } else{
+        generateTable(rows, cols);
+        displayToolbar();
+        $("#tablesize").hide();
+        $(".toolbar").show();
+        $(".controls").show();
+    }
 }
 
-function paint(tile){
-    tile.className=chosenTile;
+function generateTable(rows, cols) {
+
+    var cellsize;
+
+    if ((window.innerHeight - 30) / rows < window.innerWidth / cols) {
+        cellsize = 0.7 * (window.innerHeight - 30) / rows;
+    } else {
+        cellsize = 0.8 * window.innerWidth / cols;
+    }
+    
+    // square cells
+    
+    for(var games = 0; games < rows; games++){
+        var row = document.createElement("tr");
+        for(var j = 0; j < cols; j++){
+            var cell=document.createElement("td");
+            cell.id="row"+games+"col"+j;
+            cell.width=cellsize.toString();
+            cell.height=cellsize.toString();
+            cell.className="usable";
+            cell.setAttribute("onclick","paint(this)");
+            row.appendChild(cell);
+        }
+    document.getElementById("gametable").appendChild(row);
+    }
+    
+    return cellsize;
+    
 }
 
-function verify(){
-    var verification = true; //valid until proven invalid
-    var starts=0; var finishes=0; var keys=0; var locks=0;
-    var table=document.getElementById("gametable");//pasted in from stackoverflow
+function displayToolbar() {
+    //generates the toolbar for selecting different tile types
+
+    var table = document.getElementById("options");
+    var row = document.createElement("tr");
+    
+    function makeSelector(kind){
+        var cell = document.createElement("td");
+        cell.setAttribute("onclick","paintbrush("+kind+")");
+        if (kind === "flag") {
+            cell.title="food";
+        } else {
+            cell.title=kind;
+        }
+        cell.width = 125;
+        cell.height = 125;
+        cell.className = kind;
+        row.appendChild(cell);
+    }
+
+    makeSelector("start");
+    makeSelector("usable");
+    makeSelector("wall");
+    makeSelector("key");
+    table.appendChild(row);
+    row = document.createElement("tr");
+    makeSelector("lock");
+    makeSelector("flag");
+    makeSelector("finish");
+    makeSelector("mat");
+    table.appendChild(row);
+}
+
+function paintbrush(kind) {
+    document.getElementById("selector").className = kind;
+    if (kind === "flag") {
+        document.getElementById("selector").title = "food";
+    } else {
+        document.getElementById("selector").title = kind;
+    }
+    chosenTile = kind;
+}
+
+function paint(tile) {
+    tile.className = chosenTile;
+}
+
+function verify() {
+    var verified = true;
+    var starts = 0, finishes = 0, keys = 0, locks = 0;
+    var table = document.getElementById("gametable");
     for (var i = 0, row; row = table.rows[i]; i++) {
-        //iterate through rows
-        //rows would be accessed using the "row" variable assigned in the for loop
         for (var j = 0, col; col = row.cells[j]; j++) {
-            //iterate through columns
-            //columns would be accessed using the "col" variable assigned in the for loop
-            switch (col.className)
-            {
+            switch (col.className) {
                 case start:
                     starts++;
                     break;
@@ -116,24 +133,24 @@ function verify(){
                 case lock:
                     locks++;
                     break;
-                default:
-                    //I could care less.
             }
-
-        }  
+        }
     }
-    //below are the cases that constitute an invalid level
-    if (starts!=1){alert("There must be exactly one start tile."); verification=false;}
-    if (finishes!=1){alert("There must be exactly one finish tile."); verification=false;}
-    if (locks>0 && keys===0){alert("In order to have any locks, there must be a key somewhere on the stage."); verification=false;}
-    if (keys>0 && locks===0){alert("There cannot be a key on the stage if there is no lock to open."); verification=false;}
-    if (keys>1){alert("Maximum 1 key allowed. (It will open all the locks)."); verification=false;}
-
-    if (verification){
-        var readyToTest=confirm("Your level has been verified. The last step is to test it yourself.\nPress OK for the ability to test drive.");
-        if (readyToTest){grabLvl();}}
+    // invalid levels - only one alert at a time
+    if (starts !== 1) {
+        alert("There must be exactly one start tile.");
+    } else if (finishes !== 1) {
+        alert("There must be exactly one finish tile.");
+    } else if (locks > 0 && keys === 0) {
+        alert("In order to have any locks, there must be a key somewhere on the stage.");
+    } else if (keys > 0 && locks === 0) {
+        alert("There cannot be a key on the stage if there is no lock to open.");
+    } else {
+        alert("You can now test your level!");
+        showTest();
+    }
 }
-function grabLvl(){
+function showTest(){
     var query="";
     var stage=[];//maybe this should be global
     var table=document.getElementById("gametable");//pasted in from stackoverflow again
@@ -152,18 +169,16 @@ function grabLvl(){
     console.log(query);
     query=btoa(query);
     console.log(query);
-    document.getElementById("testdrivebtn").setAttribute("href","play.html?page=test&board="+query);
-    document.getElementById("testdrivebtn").target="_blank";
-    $("#testdrivebtn").show();
+    document.getElementById("test").setAttribute("href","play.html?page=test&board="+query);
+    document.getElementById("test").target="_blank";
+    $("#test").show();
 }
 
-//$( "button[name='restart']" ).click(function(){
-function clearlevel(){
+function clearlevel() {
     var table=document.getElementById("gametable");
     for (var i = 0, row; row = table.rows[i]; i++) {
         for (var j = 0, col; col = row.cells[j]; j++) {
-            col.className="usable";
+            col.className = "usable";
         }
     }
 }
-//});
