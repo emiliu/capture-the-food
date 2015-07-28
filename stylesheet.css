@@ -130,11 +130,6 @@ table, td {
 
 .controls {
     position: absolute;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
     width: 90%;
     bottom: 0;
 }
@@ -239,7 +234,6 @@ a, a:hover {
 
 .creator .controls {
     position: static;
-    transform: none;
 }
 
 #options, #current {
