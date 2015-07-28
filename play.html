@@ -58,18 +58,26 @@
         <div class="loader"></div>
 
         <script>
-        if (query.page === "userlevel" || query.page === "userlevels") {
-            $.getScript("https://rawgit.com/jsoma/tabletop/master/src/tabletop.js", function(data, textStatus, jqxhr) {
+        if (query.page) {
+            if (query.page === "userlevel" || query.page === "userlevels") {
+                $.getScript("https://rawgit.com/jsoma/tabletop/master/src/tabletop.js", function(data, textStatus, jqxhr) {
+                    console.log(textStatus);
+                    console.log(jqxhr.status);
+                    console.log("tabletop loaded");
+                });
+            }
+            $.getScript("js/"+query.page+".js", function(data, textStatus, jqxhr) {
                 console.log(textStatus);
                 console.log(jqxhr.status);
-                console.log("tabletop loaded");
+                console.log(query.page+".js loaded");
+            });
+        } else {
+            $.getScript("js/game.js", function(data, textStatus, jqxhr) {
+                console.log(textStatus);
+                console.log(jqxhr.status);
+                console.log("game.js loaded");
             });
         }
-        $.getScript("js/"+query.page+".js", function(data, textStatus, jqxhr) {
-            console.log(textStatus);
-            console.log(jqxhr.status);
-            console.log(query.page+".js loaded");
-        });
         </script>
         
     </body>
