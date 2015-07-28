@@ -47,6 +47,8 @@ function generateTable(rows, cols) {
     } else {
         cellsize = 0.8 * window.innerWidth / cols;
     }
+
+    $(".controls").css("width", (cellsize*cols).toString()+"px");
     
     // square cells
     

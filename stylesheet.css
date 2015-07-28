@@ -217,27 +217,24 @@ a, a:hover {
 /* == creator == */
 
 .creator #gametable {
-    position: static;
-    transform: none;
+    position: relative;
+    display: inline-table;
 }
 
 .creator #content-wrap {
     width: 90%;
-    position: static;
-    transform: none;
+    position: relative;
     margin: 10px auto;
 }
 
-.creator #title-wrap {
-    position: static;
+.creator .controls, .creator #title-wrap, .toolbar {
+    position: relative;
+    width: auto;
+    margin: 10px 0;
 }
 
-.creator .controls {
-    position: static;
-}
-
-#options, #current {
-    display: inline-table;
+#options, #current, .creator .controls, .toolbar {
+    display: inline-block;
 }
 
 #selector {
