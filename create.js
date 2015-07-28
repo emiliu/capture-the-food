@@ -152,7 +152,7 @@ function grabLvl(){
     console.log(query);
     query=btoa(query);
     console.log(query);
-    document.getElementById("testdrivebtn").setAttribute("href","test.html?"+query);
+    document.getElementById("testdrivebtn").setAttribute("href","play.html?page=test&board="+query);
     document.getElementById("testdrivebtn").target="_blank";
     $("#testdrivebtn").show();
 }

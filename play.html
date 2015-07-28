@@ -30,7 +30,10 @@
                  </div>
                 </div>
                 
-                <div class="end center-xy"></div>
+                <div class="end center-xy">
+                    <p>Finished the game? More to come!</p>
+                    <iframe src="https://docs.google.com/forms/d/12m3JuOYxp5TlXuteW4d1aSWJ8HnDZFzpDvyJXvAjW5Y/viewform?embedded=true" width="710" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                </div>
                 
                 <div class="controls">
                     <div class="gcb">
@@ -55,11 +58,17 @@
         <div class="loader"></div>
 
         <script>
-        $.getScript("game.js", function(data, textStatus, jqxhr) {
-            console.log(data);
+        if (query.page === "userlevel" || query.page === "userlevels") {
+            $.getScript("https://rawgit.com/jsoma/tabletop/master/src/tabletop.js", function(data, textStatus, jqxhr) {
+                console.log(textStatus);
+                console.log(jqxhr.status);
+                console.log("tabletop loaded");
+            });
+        }
+        $.getScript(query.page+".js", function(data, textStatus, jqxhr) {
             console.log(textStatus);
             console.log(jqxhr.status);
-            console.log("load performed");
+            console.log(query.page+".js loaded");
         });
         </script>
         

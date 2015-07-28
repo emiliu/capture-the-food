@@ -1,9 +1,8 @@
 var levelStart;
 var testLevel;
-var query = window.location.search.substring(1);
 
 $(window).load(function() {
-    testLevel = decodeBoard(query);
+    testLevel = decodeBoard(query.board);
     setup();
 });
 
@@ -22,7 +21,7 @@ function nextLevel(step) {
     if (step && level < 1){
         // beat the test level
         level++;
-        $(".end").append('<iframe src="testdriveframe.html?'+
+        $(".end").empty().append('<iframe src="testdriveframe.html?'+
             query+'"></iframe>').show();
         $(".gcb").hide();
         clearTable();

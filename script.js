@@ -25,6 +25,8 @@ var DOWN = 40;
 var level = 0;
 var myBoard, currentPos;
 
+var query = parseQuery(window.location.search.substring(1));
+
 function setup() {
     
     // load level one
@@ -409,4 +411,14 @@ function fixFormat(board){
             }
         }
     }
+}
+
+function parseQuery(queryString) {
+    var query = {};
+    var a = queryString.split("&");
+    for (var i = 0; i < a.length; i++) {
+        var b = a[i].split("=");
+        query[decodeURIComponent(b[0])] = decodeURIComponent(b[1]);
+    }
+    return query;
 }

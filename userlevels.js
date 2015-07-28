@@ -14,6 +14,6 @@ function showInfo(data, tabletop) {
 	console.log("tabletop sucessfully processed");
 	console.log(data);
 	for (var i = 0; i < data.length; i++) {
-		$("#levels").append('<a class="btn btn-primary" href="userlevel.html?'+i+'" target="_blank">'+data[i]['title']+" by "+data[i]['creator']+'</a><br/><br/>');
+		$("#levels").append('<a class="btn btn-primary" href="userlevel.html?level='+i+'" target="_blank">'+data[i]['title']+" by "+data[i]['creator']+'</a><br/><br/>');
 	}
 }

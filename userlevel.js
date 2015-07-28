@@ -1,6 +1,5 @@
 var levelStart;
 var userLevel;
-var query = parseInt(window.location.search.substring(1));
 var public_spreadsheet_url = "1YBUXGes6B0l6PtIMYRhMA8dctrvzkXtYJkksDRIINiw"
 
 $(window).load(function() {
@@ -16,12 +15,12 @@ function init() {
 function showInfo(data, tabletop) {
 	console.log("tabletop sucessfully processed");
 	console.log(data);
-	$("#level").html(data[query]["title"]+" by "+data[query]["creator"]);
-	if (isNaN(query) || query < 0 || query >= data.length) {
+	$("#level").html(data[query.level]["title"]+" by "+data[query.level]["creator"]);
+	if (isNaN(query.level) || query.level < 0 || query.level >= data.length) {
 		console.log("invalid query");
 		alert("invalid level!");
 	} else {
-		userLevel = decodeBoard(data[query]["board"]);
+		userLevel = decodeBoard(data[query.level]["board"]);
 	}
 	setup();
 }
