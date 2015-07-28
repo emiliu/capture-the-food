@@ -187,8 +187,8 @@ a, a:hover {
     display: inline-table;
 }
 #selector {
-    width: 200;
-    height: 200;
+    width: 150px;
+    height: 150px;
 }
 #test {
     display: none;

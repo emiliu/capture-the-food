@@ -10,11 +10,12 @@ var mat="mat";
 
 $(window).load( function() {
     $("#content-wrap").css("visibility", "visible");
-    $(".controls").css("display", "none");
+    $(".controls").hide();
+    $(".toolbar").hide();
 
     $("#gentable").click( function() {
         testSize();
-    })
+    });
 
     $("#verify").click( function() {
         verify();
