@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="stylesheet.css" />
         <link rel="shortcut icon" type="image/png" href="img/catcat.png" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="script.js"></script>
+        <script src="js/script.js"></script>
     </head>
 
     <body class="main">
@@ -65,7 +65,7 @@
                 console.log("tabletop loaded");
             });
         }
-        $.getScript(query.page+".js", function(data, textStatus, jqxhr) {
+        $.getScript("js/"+query.page+".js", function(data, textStatus, jqxhr) {
             console.log(textStatus);
             console.log(jqxhr.status);
             console.log(query.page+".js loaded");
