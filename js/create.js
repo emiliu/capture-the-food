@@ -153,35 +153,22 @@ function verify() {
         showTest();
     }
 }
-function showTest(){
-    var query="";
-    var stage=[];//maybe this should be global
-    var table=document.getElementById("gametable");//pasted in from stackoverflow again
+
+function showTest() {
+    var query = "";
+    var stageRow = [];
+    var table = document.getElementById("gametable");
     for (var i = 0, row; row = table.rows[i]; i++) {
-        //iterate through rows
-        //rows would be accessed using the "row" variable assigned in the for loop
-        //query=query+"row"+i+"=["
-        stage[i]=[];
+        stageRow = [];
         for (var j = 0, col; col = row.cells[j]; j++) {
-            stage[i][j]=col.className;
+            stageRow[j] = col.className;
         }
-        query+=stage[i].toString(); query+="&"
+        query += stageRow.toString() + "&";
     }
-    query=query.substring(0, query.length - 1);
-    console.log(stage);
+    query = query.substring(0, query.length - 1);
     console.log(query);
-    query=btoa(query);
+    query = btoa(query);
     console.log(query);
     document.getElementById("test").setAttribute("href","play.html?page=test&board="+query);
-    document.getElementById("test").target="_blank";
     $("#test").show();
-}
-
-function clearlevel() {
-    var table=document.getElementById("gametable");
-    for (var i = 0, row; row = table.rows[i]; i++) {
-        for (var j = 0, col; col = row.cells[j]; j++) {
-            col.className = "usable";
-        }
-    }
 }
