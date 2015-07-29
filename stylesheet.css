@@ -260,11 +260,12 @@ a, a:hover {
 iframe {
     border: none;
     width: 200px;
-    height: 260px;
+    height: 250px;
+    overflow: hidden;
 }
 
 .ss-form {
-    width: 710px;
+    width: 700px;
     text-align: center;
     margin: 0 auto;
 }
