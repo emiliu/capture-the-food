@@ -361,6 +361,7 @@ function generateTable(board) {
     }
 
     $(".controls").css("width", (cellsize*board[0].length).toString()+"px");
+    $("#content-wrap").css("min-width", (cellsize*board[0].length).toString()+"px");
     
     // square cells
     

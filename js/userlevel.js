@@ -15,7 +15,8 @@ function init() {
 function showInfo(data, tabletop) {
 	console.log("tabletop sucessfully processed");
 	console.log(data);
-	$("#level").html(data[query.level]["title"]+" by "+data[query.level]["creator"]);
+    $("#level").empty();
+	$("#title").html(data[query.level]["title"]+" by "+data[query.level]["creator"]);
 	if (isNaN(query.level) || query.level < 0 || query.level >= data.length) {
 		console.log("invalid query");
 		alert("invalid level!");
