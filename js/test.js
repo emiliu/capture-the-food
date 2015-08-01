@@ -22,8 +22,8 @@ function nextLevel(step) {
         // beat the test level
         level++;
         $(".controls").css("width", "700px");
-        $(".end").empty().append('<iframe src="testdriveframe.html?'+
-            query+'" scrolling="no"></iframe>').show();
+        $(".end").empty().append('<iframe src="testframe.html?'+
+            query.board+'" scrolling="no"></iframe>').show();
         $(".gcb").hide();
         clearTable();
     }
