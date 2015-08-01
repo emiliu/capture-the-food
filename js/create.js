@@ -170,5 +170,5 @@ function showTest() {
     query = btoa(query);
     console.log(query);
     document.getElementById("test").setAttribute("href","play.html?page=test&board="+query);
-    $("#test").show();
+    $("#test").css("display", "inline-block");
 }

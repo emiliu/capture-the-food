@@ -218,7 +218,6 @@ a, a:hover {
 
 .creator #gametable {
     position: relative;
-    display: inline-table;
 }
 
 .creator #content-wrap {
@@ -233,7 +232,7 @@ a, a:hover {
     margin: 10px 0;
 }
 
-#options, #current, .creator .controls, .toolbar {
+#options, #current, .toolbar {
     display: inline-block;
 }
 
@@ -242,8 +241,16 @@ a, a:hover {
     height: 150px;
 }
 
+#test, #verify {
+    margin: 3px 3px 3px 0;
+}
+
 #test {
     display: none;
+}
+
+#verify {
+    display: inline-block;
 }
 
 
