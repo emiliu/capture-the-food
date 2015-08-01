@@ -17,3 +17,12 @@ Creators
 - Zak Dasaro
 - Emily Liu
 - Anjali Nambrath
+
+Major Shoutouts
+---------------
+- [FortAwesome/Font-Awesome](https://github.com/FortAwesome/Font-Awesome)
+- [google/fonts](https://github.com/google/fonts)
+- [jquery/jquery](https://github.com/jquery/jquery)
+- [jsoma/tabletop](https://github.com/jsoma/tabletop)
+- [twbs/bootstrap](https://github.com/twbs/bootstrap)
+- [WolframTones](http://tones.wolfram.com/)
