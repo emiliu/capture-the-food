@@ -4,7 +4,7 @@ body {
     font-family: 'Quicksand', 'sans-serif';
 }
 
-a, a:link, a:hover {
+h1>a, h1>a:link, h1>a:hover {
     text-decoration: none;
     color: #002E5C;
 }
