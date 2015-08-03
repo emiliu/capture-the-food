@@ -4,6 +4,11 @@ body {
     font-family: 'Quicksand', 'sans-serif';
 }
 
+a, a:link, a:hover {
+    text-decoration: none;
+    color: #002E5C;
+}
+
 .main {
     background-color: #E1E6F0;
 }
